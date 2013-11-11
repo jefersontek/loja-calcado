@@ -41,7 +41,7 @@ public abstract class GenericDao<T> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<T> list(){
+	public List<T> list(){ 
 		this.openSession();
 		List<T> lst = this.session.createCriteria(this.classEntity).list();
 		this.closeSession();
