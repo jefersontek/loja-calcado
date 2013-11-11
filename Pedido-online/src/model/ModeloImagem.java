@@ -6,28 +6,26 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import dao.GenericDao;
+
 @Entity
-public class ModeloImagem {
+public class ModeloImagem extends GenericDao<ModeloImagem> {
 
 	@Id
 	@GeneratedValue
 	private Long id;	
 	private String contextType;	
 	private String url;	
+	
 	@ManyToOne
 	@JoinColumn(name="idModelo")
 	private Modelo modelo;
+	
 	public ModeloImagem() {
-		super();
+		super(ModeloImagem.class);
 		// TODO Auto-generated constructor stub
 	}
-	public ModeloImagem(Long id, String contextType, String url, Modelo modelo) {
-		super();
-		this.id = id;
-		this.contextType = contextType;
-		this.url = url;
-		this.modelo = modelo;
-	}
+	
 	public Long getId() {
 		return id;
 	}

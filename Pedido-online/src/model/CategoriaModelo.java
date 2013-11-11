@@ -7,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import dao.GenericDao;
+
 @Entity
-public class CategoriaModelo {
+public class CategoriaModelo extends GenericDao<CategoriaModelo> {
 
 	
 	@Id
@@ -21,15 +23,7 @@ public class CategoriaModelo {
 	private List<Modelo> lstModelo;
 
 	public CategoriaModelo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public CategoriaModelo(Long id, String descricao, List<Modelo> lstModelo) {
-		super();
-		this.id = id;
-		this.descricao = descricao;
-		this.lstModelo = lstModelo;
+		super(CategoriaModelo.class);
 	}
 
 	public Long getId() {

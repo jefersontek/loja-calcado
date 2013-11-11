@@ -6,8 +6,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import dao.GenericDao;
+
 @Entity
-public class PedidoItem {
+public class PedidoItem extends GenericDao<PedidoItem> {
 
 	
 	@Id
@@ -27,18 +29,7 @@ public class PedidoItem {
 	private Long quantidade;
 
 	public PedidoItem() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public PedidoItem(Long id, Pedido pedido, Modelo modelo, Long numeracao,
-			Long quantidade) {
-		super();
-		this.id = id;
-		this.pedido = pedido;
-		this.modelo = modelo;
-		this.numeracao = numeracao;
-		this.quantidade = quantidade;
+		super(PedidoItem.class);
 	}
 
 	public Long getId() {

@@ -10,8 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import dao.GenericDao;
+
 @Entity
-public class Pedido {
+public class Pedido extends GenericDao<Pedido> {
 
 	
 	@Id
@@ -30,18 +32,7 @@ public class Pedido {
 	private List<PedidoItem> lstPedidoItem;
 
 	public Pedido() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Pedido(Long id, Cliente cliente, Date dataPedido, Date dataEntrega,
-			List<PedidoItem> lstPedidoItem) {
-		super();
-		this.id = id;
-		this.cliente = cliente;
-		this.dataPedido = dataPedido;
-		this.dataEntrega = dataEntrega;
-		this.lstPedidoItem = lstPedidoItem;
+		super(Pedido.class);		
 	}
 
 	public Long getId() {

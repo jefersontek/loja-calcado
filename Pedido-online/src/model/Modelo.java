@@ -7,11 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+
+import dao.GenericDao;
 
 @Entity
-public class Modelo {
+public class Modelo extends GenericDao<Modelo> {
 
+	
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -26,24 +29,18 @@ public class Modelo {
 	@JoinColumn(name="idGradeNumeracao")
 	private GradeNumeracao gradeNumeracao;
 	
-	@OneToOne(mappedBy="modelo")
-	private List<ModeloImagem> lstModeloImagem;
+	@ManyToOne
+	@JoinColumn(name="idCategoria")
+	private CategoriaModelo categoriaModelo;
+	
+	@OneToMany(mappedBy="modelo")
+	private List<ModeloImagem> lstModeloImagem;  
 
 	public Modelo() {
-		super();
+		super(Modelo.class);
 	}
 
-	public Modelo(Long id, String referencia, String descricao, String cor,
-			GradeNumeracao gradeNumeracao, List<ModeloImagem> lstModeloImagem) {
-		super();
-		this.id = id;
-		this.referencia = referencia;
-		this.descricao = descricao;
-		this.cor = cor;
-		this.gradeNumeracao = gradeNumeracao;
-		this.lstModeloImagem = lstModeloImagem;
-	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -91,6 +88,17 @@ public class Modelo {
 	public void setLstModeloImagem(List<ModeloImagem> lstModeloImagem) {
 		this.lstModeloImagem = lstModeloImagem;
 	}
+
+
+	public CategoriaModelo getCategoriaModelo() {
+		return categoriaModelo;
+	}
+
+
+	public void setCategoriaModelo(CategoriaModelo categoriaModelo) {
+		this.categoriaModelo = categoriaModelo;
+	}
+	
 	
 	
 	

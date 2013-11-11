@@ -7,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import dao.GenericDao;
+
 @Entity
-public class GradeNumeracao {
+public class GradeNumeracao extends GenericDao<GradeNumeracao> {
 
 	@Id
 	@GeneratedValue
@@ -24,22 +26,8 @@ public class GradeNumeracao {
 	
 	
 	public GradeNumeracao() {
-		super();
-		// TODO Auto-generated constructor stub
+		super(GradeNumeracao.class);
 	}
-
-
-
-	public GradeNumeracao(Long id, Long numeracaoInicial, Long numeracaoFinal,
-			List<Modelo> lstModelo) {
-		super();
-		this.id = id;
-		this.numeracaoInicial = numeracaoInicial;
-		this.numeracaoFinal = numeracaoFinal;
-		this.lstModelo = lstModelo;
-	}
-
-
 
 	public Long getId() {
 		return id;

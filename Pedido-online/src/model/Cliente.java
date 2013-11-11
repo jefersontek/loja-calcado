@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import dao.GenericDao;
+
 @Entity
-public class Cliente {
+public class Cliente extends GenericDao<Cliente> {
 
 	
 	@Id
@@ -23,19 +25,7 @@ public class Cliente {
 	private String endereco;
 
 	public Cliente() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Cliente(Long id, String razaoSocial, String cnpj, String telefone,
-			String contato, String endereco) {
-		super();
-		this.id = id;
-		this.razaoSocial = razaoSocial;
-		this.cnpj = cnpj;
-		this.telefone = telefone;
-		this.contato = contato;
-		this.endereco = endereco;
+		super(Cliente.class);		
 	}
 
 	public Long getId() {
